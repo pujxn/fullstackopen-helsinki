@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant browser
+    participant server
+    
+    browser->>server: POST https://studies.cs.helsinki.fi//exampleapp/new_note_spa {"note":"123"}
+    activate server
+    server->>browser: the new note object {"message":"note created"}
+    
+    Note right of browser: The browser stores the new note in the local 'notes', and also triggers the callback function 'redrawNotes' due to the form submission. Asynchronously, the browser also makes a request to the server to store the new note's content in the 'notes list on the server.
